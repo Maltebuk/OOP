@@ -49,5 +49,12 @@ public class FoodProduct extends Product
         }
         return false;
     }
+    
+    //The return statement implies that if our current date is higher than the exipration date the statement will return true otherwise false. 
+    @Override
+    public boolean isExpired(){
+        Date currentDate = new Date(); 
+        return currentDate.getTime() > this.expireDate.getTime();
+    }
 
 }

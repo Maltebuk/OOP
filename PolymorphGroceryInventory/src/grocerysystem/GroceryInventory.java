@@ -9,8 +9,8 @@ public class GroceryInventory {
 
     public static void main(String[] args) {
         ProductDatabase inventory = new ProductDatabase();
-        
-        FoodProduct p1 = foodProductCreator("Milk", 6.95, 1000000000, 5);
+
+        FoodProduct p1 = foodProductCreator("Milk", 6.95, (100), 5);
         inventory.addProduct(p1);
         FoodProduct p2 = foodProductCreator("Cream", 12.95, 800000000, 3);
         inventory.addProduct(p2);
@@ -22,19 +22,24 @@ public class GroceryInventory {
 
         NonFoodProduct p5 = new NonFoodProduct("Stol", 29.5, new String[]{"Plast", "Mere plast"});
         inventory.addProduct(p5);
-        
+
         NonFoodProduct p6 = new NonFoodProduct("Samsung Galaxy S9", 7899.95, new String[]{"Snapdragon something something", "Ram", "Screen"});
         inventory.addProduct(p6);
 
         System.out.println("Total price: " + inventory.getTotalPrice() + "\n");
         System.out.println(inventory.printInventory());
-        
+
         //Polymorph loop
         for (Product p : inventory.getProducts()) {
             System.out.println(p.toString());
         }
+        inventory.removeExpiredFoods();
+       
+        System.out.println("tester " + p1.isExpired());
+      
         
-        System.out.println("Hej Jakob");
+        System.out.println(inventory.printInventory());
+    
     }
 
     private static FoodProduct foodProductCreator(String name, double price, long expOffsetMs, int temp) {

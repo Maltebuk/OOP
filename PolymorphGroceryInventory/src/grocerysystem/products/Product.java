@@ -30,4 +30,11 @@ public abstract class Product implements Expireable
     {
         return serial;
     }
+
+    @Override
+    public boolean isExpired() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
 }

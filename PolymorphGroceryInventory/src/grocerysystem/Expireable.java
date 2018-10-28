@@ -10,5 +10,8 @@ package grocerysystem;
  * @author Malte Bukrinski
  */
 public interface Expireable {
-    
+    public boolean isExpired(); 
+
+
 }
+

@@ -19,20 +19,16 @@ public class ProductDatabase {
     }
 
     public void removeProduct(UUID serial) {
-        for(Product p : products)
-        {
-            if(p.getSerial().equals(serial))
-            {
+        for (Product p : products) {
+            if (p.getSerial().equals(serial)) {
                 products.remove(p);
             }
         }
     }
-    
-    public void removeProduct(Product p)
-    {
+
+    public void removeProduct(Product p) {
         products.remove(p);
     }
-
 
     public String printInventory() {
         //Use StringBuild to create a combined string from multiple strings.
@@ -58,10 +54,31 @@ public class ProductDatabase {
         //Use DecimalFormat class to get a currency representation of the double in local currency.
         return DecimalFormat.getCurrencyInstance().format(result);
     }
-    
-    public ArrayList<Product> getProducts()
-    {
+
+    public ArrayList<Product> getProducts() {
         //Return a copy of the array, so that the database is not exposed to external actors.
         return new ArrayList(products);
     }
+
+    public void removeExpiredFoods() {
+        ArrayList<Product> foundProducts = new ArrayList<>();
+        for (Product p : products) {
+            try {
+
+                if (p.isExpired() == true) {
+                     foundProducts.add(p);
+
+                    //removeProduct(p.getSerial());
+                }
+            } catch (UnsupportedOperationException exception) {
+            }
+        }
+        for(Product product: foundProducts){
+            this.products.remove(product); 
+        }
+
+    }
+    //  private boolean isExpired() {
+    //     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //   }
 }
