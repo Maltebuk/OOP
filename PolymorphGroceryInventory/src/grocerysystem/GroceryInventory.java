@@ -34,9 +34,7 @@ public class GroceryInventory {
             System.out.println(p.toString());
         }
         inventory.removeExpiredFoods();
-       
-        System.out.println("tester " + p1.isExpired());
-      
+        
         
         System.out.println(inventory.printInventory());
     

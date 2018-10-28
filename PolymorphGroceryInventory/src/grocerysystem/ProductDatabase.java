@@ -75,6 +75,7 @@ public class ProductDatabase {
         }
         for(Product product: foundProducts){
             this.products.remove(product); 
+            System.out.println("\nRemoved product " + product);
         }
 
     }
