@@ -28,11 +28,13 @@ public class GroceryInventory {
 
         System.out.println("Total price: " + inventory.getTotalPrice() + "\n");
         System.out.println(inventory.printInventory());
-        Product p5 = new Product("Test", 4.0);
+        
         //Polymorph loop
         for (Product p : inventory.getProducts()) {
             System.out.println(p.toString());
         }
+        
+        System.out.println("Hej Jakob");
     }
 
     private static FoodProduct foodProductCreator(String name, double price, long expOffsetMs, int temp) {
