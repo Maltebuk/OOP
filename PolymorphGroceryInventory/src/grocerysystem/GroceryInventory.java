@@ -7,10 +7,10 @@ import java.util.Date;
 
 public class GroceryInventory {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExpiredProdctAddedException {
         ProductDatabase inventory = new ProductDatabase();
 
-        FoodProduct p1 = foodProductCreator("Milk", 6.95, (100), 5);
+        FoodProduct p1 = foodProductCreator("Milk", 6.95, 100000, 5);
         inventory.addProduct(p1);
         FoodProduct p2 = foodProductCreator("Cream", 12.95, 800000000, 3);
         inventory.addProduct(p2);
@@ -40,7 +40,7 @@ public class GroceryInventory {
     
     }
 
-    private static FoodProduct foodProductCreator(String name, double price, long expOffsetMs, int temp) {
+    private static FoodProduct foodProductCreator(String name, double price, long expOffsetMs, int temp) throws ExpiredProdctAddedException {
         Date d = new Date();
         d.setTime(d.getTime() + expOffsetMs);
         return new FoodProduct(name, price, d, temp);
