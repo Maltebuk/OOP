@@ -4,32 +4,38 @@ import java.text.DecimalFormat;
 import java.util.UUID;
 import grocerysystem.products.Product;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProductDatabase {
 
-    private ArrayList<Product> products;
+    private final Map<UUID, Product> Inventory = new HashMap<>();
 
-    public ProductDatabase() {
+    /*public ProductDatabase() {
         this.products = new ArrayList();
     }
+*/
 
     public void addProduct(Product p) {
 
-        products.add(p);
+        this.Inventory.put(UUID.randomUUID(), p); 
+        //products.add(p);
     }
 
-    public void removeProduct(UUID serial) {
-        for (Product p : products) {
-            if (p.getSerial().equals(serial)) {
-                products.remove(p);
+    public boolean removeProduct(UUID serial) {
+        for (final Map.Entry<UUID,Product> entrySet : this.Inventory.entrySet()) {
+            if (entrySet.getValue().getSerial() == serial) {
+                return this.Inventory.remove(entrySet.getKey()) != null; 
             }
         }
+        return false; 
     }
 
-    public void removeProduct(Product p) {
+   /*  public void removeProduct(Product p) {
         products.remove(p);
     }
-
+    */
+   
     public String printInventory() {
         //Use StringBuild to create a combined string from multiple strings.
         StringBuilder sb = new StringBuilder();
